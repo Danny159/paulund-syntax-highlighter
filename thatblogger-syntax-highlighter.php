@@ -1,31 +1,17 @@
 <?php
 /*
- * Plugin Name: Paulund Syntax Highlighter
- * Plugin URI: http://www.paulund.co.uk
+ * Plugin Name: ThatBlogger Syntax Highlighter
+ * Plugin URI: http://www.thatblogger.co
  * Description: A widget allows you to display code on your Website
- * Version: 1.1
- * Author: Paul Underwood
- * Author URI: http://www.paulund.co.uk
+ * Version: 2.0
+ * Author: Daniel Roizer
+ * Author URI: http://www.thatblogger.co
  * License: GPL2
- * Stable tag: trunk
-
-    Copyright 2012  Paul Underwood
-
-    This program is free software; you can redistribute it and/or
-    modify it under the terms of the GNU General Public License,
-    version 2, as published by the Free Software Foundation.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+ 
+ * This plugin is a fork of the plugin Paulund Syntax Highlighter by http://www.paulund.co.uk
 */
 
 add_action('wp_enqueue_scripts', 'pu_load_styles');
-/**
- * [pu_load_styles description]
- * @return [type] [description]
- */
 function pu_load_styles()
 {
     wp_enqueue_script( 'prism_js', plugins_url( '/js/prism.js' , __FILE__ ) , array( 'jquery' ), NULL, true );
@@ -40,27 +26,27 @@ remove_filter('the_content', 'wptexturize');
 remove_filter('comment_text', 'wptexturize');
 remove_filter('the_excerpt', 'wptexturize');
 
-add_shortcode( 'html' , 'paulund_hightlight_html' );
-add_shortcode( 'css' , 'paulund_hightlight_css' );
-add_shortcode( 'javascript' , 'paulund_hightlight_javascript' );
-add_shortcode( 'php' , 'paulund_hightlight_php' );
+add_shortcode( 'html'			, 'thatblogger_hightlight_html' );
+add_shortcode( 'css'			, 'thatblogger_hightlight_css' );
+add_shortcode( 'javascript'	, 'thatblogger_hightlight_javascript' );
+add_shortcode( 'php'			, 'thatblogger_hightlight_php' );
 
-function paulund_hightlight_html($atts, $content = null)
+function thatblogger_hightlight_html($atts, $content = null)
 {
     return pu_encode_content('html', $content);
 }
 
-function paulund_hightlight_css($atts, $content = null)
+function thatblogger_hightlight_css($atts, $content = null)
 {
     return pu_encode_content('css', $content);
 }
 
-function paulund_hightlight_javascript($atts, $content = null)
+function thatblogger_hightlight_javascript($atts, $content = null)
 {
     return pu_encode_content('javascript', $content);
 }
 
-function paulund_hightlight_php($atts, $content = null)
+function thatblogger_hightlight_php($atts, $content = null)
 {
     return pu_encode_content('php', $content);
 }
