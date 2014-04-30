@@ -74,11 +74,9 @@ function pu_encode_content($lang, $content)
 
     $content = str_replace('#038;', '', $content);
 
-    return sprintf('<pre class="language-%s"><code>%s</code></pre>', $lang, $content);
+    return sprintf('<pre class="language-%s line-numbers"><code>%s</code></pre>', $lang, $content);
 }
 
 function pu_pre_entities( $matches ) {
     return str_replace( $matches[1], htmlspecialchars( $matches[1]), $matches[0] );
 }
-
-?>
